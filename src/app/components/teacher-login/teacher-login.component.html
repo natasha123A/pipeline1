@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div class="container ">
+        <div class="card bg-dark ">
+            <div class="card-body">
+                <h4 class="card-title text-center text-white">Result Management
+                    System</h4>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <h4>Login Page</h4>
+        </div>
+        <div class="card m-2">
+            <div class="card-body bg-light">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    
+                    <div class=" form-group row m-4">
+                        <label for="name" class="col-2 col-form-label ">Name</label>
+                        <div class="col-4">
+                            <input type="text" class="form-control" formControlName="name" cname="name"
+                                placeholder="name"   [ngClass]="{ 'is-invalid': submitted && f['name'].errors }" >
+                                <div *ngIf="submitted &&  f['name'].errors" class="invalid-feedback">
+                                    <div *ngIf= "f['name'].errors['required']">name is required</div>
+                                    <div *ngIf="f['name'].errors['minlength']">name must be at least 3 characters</div>
+                                    <div *ngIf=" f['name'].errors['maxlength']">name must be at most 30 characters</div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class=" form-group row m-4">
+                        <label for="password" class="col-2 col-form-label ">Password</label>
+                        <div class="col-4">
+                            <input type="password" class="form-control" formControlName="password" c name="password"
+                                placeholder="password"  [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" >
+                                <div *ngIf="submitted &&  f['password'].errors" class="invalid-feedback">
+                                    <div *ngIf= "f['password'].errors['required']">password is required</div>
+                                    <div *ngIf=" f['password'].errors['minlength']">password must be at least 3 characters</div>
+                                    <div *ngIf=" f['password'].errors['maxlength']">password must be at most 30 characters</div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <div class=" form-group row m-4">
+                        <button type="submit" class="btn btn-primary col-2 ">Login</button>
+                        <a href="/register" role="button" class="btn btn-info ml-2 p-3 col-2 ">Create An Account</a>
+                    </div>
+                </form>
+
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
